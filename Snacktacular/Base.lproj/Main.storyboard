@@ -238,12 +238,16 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2f1-wz-jEc">
+                                        <rect key="frame" x="0.0" y="62" width="414" height="180"/>
+                                    </mapView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="bGu-1Z-Lon" firstAttribute="leading" secondItem="FDG-F8-3OR" secondAttribute="trailing" constant="8" id="3Y7-Hz-Tzk"/>
                                     <constraint firstAttribute="height" constant="380" id="5NG-ez-B1T"/>
                                     <constraint firstItem="MWg-ni-GCj" firstAttribute="top" secondItem="TE9-dW-8Lr" secondAttribute="bottom" constant="2" id="B54-1c-EJr"/>
+                                    <constraint firstAttribute="trailing" secondItem="2f1-wz-jEc" secondAttribute="trailing" id="Hph-bH-uos"/>
                                     <constraint firstItem="Jfs-bc-SrS" firstAttribute="leading" secondItem="KWD-LT-Ljz" secondAttribute="leading" id="K0n-hR-vCT"/>
                                     <constraint firstItem="TE9-dW-8Lr" firstAttribute="top" secondItem="KWD-LT-Ljz" secondAttribute="top" constant="8" id="KYu-Ty-hHY"/>
                                     <constraint firstItem="TE9-dW-8Lr" firstAttribute="leading" secondItem="KWD-LT-Ljz" secondAttribute="leading" constant="8" id="LgZ-iQ-9vG"/>
@@ -251,14 +255,17 @@
                                     <constraint firstItem="bGu-1Z-Lon" firstAttribute="top" secondItem="Jfs-bc-SrS" secondAttribute="bottom" constant="4" id="Qah-FH-RBK"/>
                                     <constraint firstAttribute="trailing" secondItem="bGu-1Z-Lon" secondAttribute="trailing" constant="8" id="Rbc-OE-vL7"/>
                                     <constraint firstItem="ttt-oT-vDN" firstAttribute="top" secondItem="Jfs-bc-SrS" secondAttribute="bottom" constant="6" id="TAj-B5-Y8F"/>
+                                    <constraint firstItem="2f1-wz-jEc" firstAttribute="leading" secondItem="KWD-LT-Ljz" secondAttribute="leading" id="XBx-46-SpH"/>
                                     <constraint firstAttribute="trailing" secondItem="Jfs-bc-SrS" secondAttribute="trailing" id="aDe-8R-NTS"/>
                                     <constraint firstItem="MWg-ni-GCj" firstAttribute="leading" secondItem="KWD-LT-Ljz" secondAttribute="leading" constant="8" id="aNZ-0Y-nG6"/>
                                     <constraint firstAttribute="trailing" secondItem="TE9-dW-8Lr" secondAttribute="trailing" constant="8" id="cf2-A1-0Am"/>
+                                    <constraint firstItem="2f1-wz-jEc" firstAttribute="top" secondItem="MWg-ni-GCj" secondAttribute="bottom" constant="2" id="gry-ir-11t"/>
                                     <constraint firstItem="ttt-oT-vDN" firstAttribute="leading" secondItem="1Dt-N3-Sb5" secondAttribute="trailing" id="hHQ-BP-Z96"/>
                                     <constraint firstItem="1Dt-N3-Sb5" firstAttribute="leading" secondItem="KWD-LT-Ljz" secondAttribute="leading" constant="8" id="iL8-8k-ojZ"/>
                                     <constraint firstItem="1Dt-N3-Sb5" firstAttribute="top" secondItem="Jfs-bc-SrS" secondAttribute="bottom" constant="8" id="k2m-Qg-hHU"/>
                                     <constraint firstItem="FDG-F8-3OR" firstAttribute="top" secondItem="Jfs-bc-SrS" secondAttribute="bottom" constant="4" id="lwj-8J-nS8"/>
                                     <constraint firstAttribute="trailing" secondItem="MWg-ni-GCj" secondAttribute="trailing" constant="8" id="mOb-Wt-xgq"/>
+                                    <constraint firstItem="Jfs-bc-SrS" firstAttribute="top" secondItem="2f1-wz-jEc" secondAttribute="bottom" id="yJv-yu-UaV"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -294,6 +301,7 @@
                     <connections>
                         <outlet property="addressTextField" destination="MWg-ni-GCj" id="hM1-do-Za5"/>
                         <outlet property="cancelButton" destination="4Kk-3A-H0G" id="zWP-ml-0G2"/>
+                        <outlet property="mapView" destination="2f1-wz-jEc" id="F6N-fC-Sjd"/>
                         <outlet property="nameTextField" destination="TE9-dW-8Lr" id="rFs-Nt-e1U"/>
                         <outlet property="ratingLabel" destination="ttt-oT-vDN" id="xSg-IT-uvo"/>
                     </connections>
