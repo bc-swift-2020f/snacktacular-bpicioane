@@ -30,6 +30,11 @@ class SpotDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         tableView.delegate = self
         tableView.dataSource = self
         getLocation()
@@ -92,6 +97,13 @@ class SpotDetailViewController: UIViewController {
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
     }
+    
+    @IBAction func ratingButtonPressed(_ sender: UIButton) {
+        //TODO: check if spot was saved. if not segue.
+        performSegue(withIdentifier: "AddReview", sender: nil)
+    }
+    
+    
     
 }
 
