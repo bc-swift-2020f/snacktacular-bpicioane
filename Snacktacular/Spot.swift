@@ -39,6 +39,10 @@ class Spot: NSObject, MKAnnotation {
         return coordinate.longitude
     }
     
+    var location: CLLocation {
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
     init(name: String, address: String, coordinate: CLLocationCoordinate2D, averageRating: Double, numberOfReviews: Int, postingUserID: String, documentID: String) {
         self.name = name
         self.address = address
