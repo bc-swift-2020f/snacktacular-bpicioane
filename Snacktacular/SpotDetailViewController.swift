@@ -9,12 +9,15 @@
 import UIKit
 import GooglePlaces
 import MapKit
+import Contacts
 
 class SpotDetailViewController: UIViewController {
     
     var spot: Spot!
+    var locationManager: CLLocationManager!
     
     let regionDistance: CLLocationDegrees = 750.0
+    
 
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,6 +28,7 @@ class SpotDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getLocation()
         if spot == nil {
             spot = Spot()
         }
@@ -109,12 +113,93 @@ extension SpotDetailViewController: GMSAutocompleteViewControllerDelegate {
   }
 
   // Turn the network activity indicator on and off again.
-  func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-  }
-
-  func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-  }
 
 }
+
+extension SpotDetailViewController: CLLocationManagerDelegate {
+    func getLocation() {
+        //Creating a CLLocationManager will automatically check authorization
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("checking for auth.")
+        handleAuthentificationStatus(status: status)
+    }
+    
+    func handleAuthentificationStatus(status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            self.oneButtonAlert(title: "Location Services Denied", message: "It may be that parental controls are restricting location use in this app.")
+        case .denied:
+            //TODO: handle alert with ability to change
+            showAlertToPrivacySettings(title: "User Has Not Authorized Location Services", message: "Select 'Settings' below to enable location services for this app.")
+        case .authorizedAlways:
+            locationManager.requestLocation()
+        case .authorizedWhenInUse:
+            locationManager.requestLocation()
+        @unknown default:
+            print("DEV ALERT: unknown case of status \(status)")
+        }
+    }
+    
+    func showAlertToPrivacySettings(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            print("L. Something went wrong with openSettingsURLString.")
+            return
+        }
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) in
+            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(settingsAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        
+        
+        let currentLocation = locations.last ?? CLLocation()
+        print("current location is \(currentLocation.coordinate.latitude), \(currentLocation.coordinate.longitude)")
+        var name = ""
+        var address = ""
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+            if error != nil {
+                print("L. Error retrieving place. \(error!.localizedDescription)")
+            }
+            if placemarks != nil {
+                let placemark = placemarks?.last
+                name = placemark?.name ?? "Name Unknown"
+                if let postalAddress = placemark?.postalAddress {
+                    address = CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress)
+                }
+            } else {
+                print("L. Error retrieving placemark.")
+            }
+            // if no spot data, make device location the spot
+            if self.spot.name == "" && self.spot.address == "" {
+                self.spot.name = name
+                self.spot.address = address
+                self.spot.coordinate = currentLocation.coordinate
+            }
+            self.mapView.userLocation.title = name
+            self.mapView.userLocation.subtitle = address.replacingOccurrences(of: "\n", with: ", ")
+            self.updateUserInterface()
+        }
+        
+
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        //TODO: deal with error
+        print("L. \(error.localizedDescription). Failed to get device location.")
+    }
+}
+
