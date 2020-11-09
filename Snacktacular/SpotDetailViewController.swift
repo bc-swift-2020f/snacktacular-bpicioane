@@ -25,6 +25,10 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
+    
     var reviews: Reviews!
     
     override func viewDidLoad() {
