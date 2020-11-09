@@ -25,8 +25,7 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
-    var reviews: [String] = ["Tasty", "Awful", "Tasty", "Awful", "Tasty", "Awful", "Tasty", "Awful", "Tasty", "Awful", "Tasty", "Awful", "Tasty", "Awful"]
-    
+    var reviews: Reviews!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +41,16 @@ class SpotDetailViewController: UIViewController {
             spot = Spot()
         }
         setupMapView()
+        reviews = Reviews()
         updateUserInterface()
         updateMap()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reviews.loadData(spot: spot) {
+            self.tableView.reloadData()
+        }
     }
     
     func setupMapView() {
@@ -66,6 +73,37 @@ class SpotDetailViewController: UIViewController {
     func updateFromInterface() {
         spot.name = nameTextField.text!
         spot.address = addressTextField.text!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        updateFromInterface()
+        switch segue.identifier ?? "" {
+        case "AddReview":
+            let navigationController = segue.destination as! UINavigationController
+            let destination = navigationController.viewControllers.first as! ReviewTableViewController
+            destination.spot = spot
+        case "ShowReview":
+            let destination = segue.destination as! ReviewTableViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.spot = spot
+            destination.review = reviews.reviewArray[selectedIndexPath.row]
+        default:
+            print("L. Couldn't find a case for \(segue.identifier!)")
+        }
+    }
+    
+    func saveCancelAlert(title: String, message: String, segueIdentifier: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
+            self.spot.saveData { (success) in
+                self.performSegue(withIdentifier: segueIdentifier, sender: nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+
     }
     
     func leaveViewController() {
@@ -99,8 +137,12 @@ class SpotDetailViewController: UIViewController {
     }
     
     @IBAction func ratingButtonPressed(_ sender: UIButton) {
-        //TODO: check if spot was saved. if not segue.
-        performSegue(withIdentifier: "AddReview", sender: nil)
+        if spot.documentID == "" {
+            saveCancelAlert(title: "This Venue Has Not Been Saved", message: "You  must save this venue before you can review it.", segueIdentifier: "AddReview")
+        } else {
+            performSegue(withIdentifier: "AddReview", sender: nil)
+        }
+        
     }
     
     
@@ -178,9 +220,6 @@ extension SpotDetailViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
-        
         let currentLocation = locations.last ?? CLLocation()
         print("current location is \(currentLocation.coordinate.latitude), \(currentLocation.coordinate.longitude)")
         var name = ""
@@ -221,11 +260,12 @@ extension SpotDetailViewController: CLLocationManagerDelegate {
 
 extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        return reviews.reviewArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! SpotReviewTableViewCell
+        cell.review = reviews.reviewArray[indexPath.row]
         return cell
     }
     

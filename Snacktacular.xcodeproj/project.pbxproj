@@ -22,6 +22,9 @@
 		319B6C7F254E633A00A2B698 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6C7E254E633A00A2B698 /* UIViewController+alert.swift */; };
 		319B6C81254F1AA500A2B698 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6C80254F1AA500A2B698 /* Spots.swift */; };
 		319B6C83254F21E700A2B698 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6C82254F21E700A2B698 /* APIKeys.swift */; };
+		31DD7DAA2558AE4C00619F29 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD7DA92558AE4C00619F29 /* Review.swift */; };
+		31DD7DAC2558BDEE00619F29 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD7DAB2558BDEE00619F29 /* Reviews.swift */; };
+		31DD7DAE2558CC1D00619F29 /* SpotReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD7DAD2558CC1C00619F29 /* SpotReviewTableViewCell.swift */; };
 		FB6D166481E1D6157021BCB4 /* Pods_Snacktacular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDA22CAB7E18D7FBA268B73 /* Pods_Snacktacular.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		319B6C7E254E633A00A2B698 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		319B6C80254F1AA500A2B698 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		319B6C82254F21E700A2B698 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		31DD7DA92558AE4C00619F29 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		31DD7DAB2558BDEE00619F29 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		31DD7DAD2558CC1C00619F29 /* SpotReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotReviewTableViewCell.swift; sourceTree = "<group>"; };
 		3FDA22CAB7E18D7FBA268B73 /* Pods_Snacktacular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snacktacular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE83E803CCBCDCB6C5D5B85 /* Pods-Snacktacular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacktacular.release.xcconfig"; path = "Target Support Files/Pods-Snacktacular/Pods-Snacktacular.release.xcconfig"; sourceTree = "<group>"; };
 		F1FEAC1C6FBDB7D566112FEE /* Pods-Snacktacular.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacktacular.debug.xcconfig"; path = "Target Support Files/Pods-Snacktacular/Pods-Snacktacular.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,11 +101,14 @@
 				319B6C82254F21E700A2B698 /* APIKeys.swift */,
 				319B6C7A254E4F1900A2B698 /* Spot.swift */,
 				319B6C80254F1AA500A2B698 /* Spots.swift */,
+				31DD7DA92558AE4C00619F29 /* Review.swift */,
+				31DD7DAB2558BDEE00619F29 /* Reviews.swift */,
 				3162BB05254C8FFF0072D8EF /* LoginViewController.swift */,
 				319B6C74254DFFDE00A2B698 /* SpotListViewController.swift */,
 				319B6C78254E080D00A2B698 /* SpotDetailViewController.swift */,
 				31691AA525575C0600F4B75C /* ReviewTableViewController.swift */,
 				319B6C76254E022100A2B698 /* SpotTableViewCell.swift */,
+				31DD7DAD2558CC1C00619F29 /* SpotReviewTableViewCell.swift */,
 				3162BB07254C8FFF0072D8EF /* Main.storyboard */,
 				3162BB0A254C90040072D8EF /* Assets.xcassets */,
 				3162BB0C254C90040072D8EF /* LaunchScreen.storyboard */,
@@ -252,13 +261,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DD7DAC2558BDEE00619F29 /* Reviews.swift in Sources */,
 				319B6C75254DFFDE00A2B698 /* SpotListViewController.swift in Sources */,
 				3162BB06254C8FFF0072D8EF /* LoginViewController.swift in Sources */,
 				3162BB02254C8FFF0072D8EF /* AppDelegate.swift in Sources */,
 				319B6C79254E080D00A2B698 /* SpotDetailViewController.swift in Sources */,
 				31691AA625575C0700F4B75C /* ReviewTableViewController.swift in Sources */,
+				31DD7DAA2558AE4C00619F29 /* Review.swift in Sources */,
 				319B6C81254F1AA500A2B698 /* Spots.swift in Sources */,
 				319B6C77254E022100A2B698 /* SpotTableViewCell.swift in Sources */,
+				31DD7DAE2558CC1D00619F29 /* SpotReviewTableViewCell.swift in Sources */,
 				319B6C83254F21E700A2B698 /* APIKeys.swift in Sources */,
 				319B6C7B254E4F1900A2B698 /* Spot.swift in Sources */,
 				3162BB04254C8FFF0072D8EF /* SceneDelegate.swift in Sources */,
