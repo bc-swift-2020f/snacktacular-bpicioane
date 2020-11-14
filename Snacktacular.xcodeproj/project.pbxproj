@@ -22,6 +22,8 @@
 		319B6C7F254E633A00A2B698 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6C7E254E633A00A2B698 /* UIViewController+alert.swift */; };
 		319B6C81254F1AA500A2B698 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6C80254F1AA500A2B698 /* Spots.swift */; };
 		319B6C83254F21E700A2B698 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6C82254F21E700A2B698 /* APIKeys.swift */; };
+		31CA6C2925603062004366E3 /* UIView+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA6C2825603062004366E3 /* UIView+addBorder.swift */; };
+		31CA6C2B256030E8004366E3 /* UIBarButtonItem+hide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA6C2A256030E8004366E3 /* UIBarButtonItem+hide.swift */; };
 		31DD7DAA2558AE4C00619F29 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD7DA92558AE4C00619F29 /* Review.swift */; };
 		31DD7DAC2558BDEE00619F29 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD7DAB2558BDEE00619F29 /* Reviews.swift */; };
 		31DD7DAE2558CC1D00619F29 /* SpotReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD7DAD2558CC1C00619F29 /* SpotReviewTableViewCell.swift */; };
@@ -46,6 +48,8 @@
 		319B6C7E254E633A00A2B698 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		319B6C80254F1AA500A2B698 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		319B6C82254F21E700A2B698 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		31CA6C2825603062004366E3 /* UIView+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addBorder.swift"; sourceTree = "<group>"; };
+		31CA6C2A256030E8004366E3 /* UIBarButtonItem+hide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+hide.swift"; sourceTree = "<group>"; };
 		31DD7DA92558AE4C00619F29 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		31DD7DAB2558BDEE00619F29 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		31DD7DAD2558CC1C00619F29 /* SpotReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				3162BB01254C8FFF0072D8EF /* AppDelegate.swift */,
 				3162BB03254C8FFF0072D8EF /* SceneDelegate.swift */,
 				319B6C7E254E633A00A2B698 /* UIViewController+alert.swift */,
+				31CA6C2825603062004366E3 /* UIView+addBorder.swift */,
+				31CA6C2A256030E8004366E3 /* UIBarButtonItem+hide.swift */,
 				319B6C82254F21E700A2B698 /* APIKeys.swift */,
 				319B6C7A254E4F1900A2B698 /* Spot.swift */,
 				319B6C80254F1AA500A2B698 /* Spots.swift */,
@@ -269,12 +275,14 @@
 				31691AA625575C0700F4B75C /* ReviewTableViewController.swift in Sources */,
 				31DD7DAA2558AE4C00619F29 /* Review.swift in Sources */,
 				319B6C81254F1AA500A2B698 /* Spots.swift in Sources */,
+				31CA6C2B256030E8004366E3 /* UIBarButtonItem+hide.swift in Sources */,
 				319B6C77254E022100A2B698 /* SpotTableViewCell.swift in Sources */,
 				31DD7DAE2558CC1D00619F29 /* SpotReviewTableViewCell.swift in Sources */,
 				319B6C83254F21E700A2B698 /* APIKeys.swift in Sources */,
 				319B6C7B254E4F1900A2B698 /* Spot.swift in Sources */,
 				3162BB04254C8FFF0072D8EF /* SceneDelegate.swift in Sources */,
 				319B6C7F254E633A00A2B698 /* UIViewController+alert.swift in Sources */,
+				31CA6C2925603062004366E3 /* UIView+addBorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

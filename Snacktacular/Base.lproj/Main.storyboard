@@ -495,7 +495,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cdi-Dd-8U4">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdi-Dd-8U4">
                                                     <rect key="frame" x="101" y="27" width="212" height="44"/>
                                                     <color key="backgroundColor" name="UIElementBackground"/>
                                                     <constraints>
@@ -506,7 +506,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-q0-r6g">
                                                     <rect key="frame" x="103" y="29" width="208" height="40"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4W-u2-TEf">
+                                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4W-u2-TEf">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                             <color key="backgroundColor" name="UIElementBackground"/>
                                                             <constraints>
@@ -521,7 +521,7 @@
                                                                 <action selector="starButtonPressed:" destination="3qo-7Q-mDd" eventType="touchUpInside" id="pIl-pu-Hlj"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rO-sR-R9M">
+                                                        <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rO-sR-R9M">
                                                             <rect key="frame" x="42" y="0.0" width="40" height="40"/>
                                                             <color key="backgroundColor" name="UIElementBackground"/>
                                                             <constraints>
@@ -536,7 +536,7 @@
                                                                 <action selector="starButtonPressed:" destination="3qo-7Q-mDd" eventType="touchUpInside" id="bye-bV-itP"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRa-u2-s67">
+                                                        <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRa-u2-s67">
                                                             <rect key="frame" x="84" y="0.0" width="40" height="40"/>
                                                             <color key="backgroundColor" name="UIElementBackground"/>
                                                             <constraints>
@@ -551,7 +551,7 @@
                                                                 <action selector="starButtonPressed:" destination="3qo-7Q-mDd" eventType="touchUpInside" id="3xD-ug-lNe"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrF-3r-sNT">
+                                                        <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrF-3r-sNT">
                                                             <rect key="frame" x="126" y="0.0" width="40" height="40"/>
                                                             <color key="backgroundColor" name="UIElementBackground"/>
                                                             <constraints>
@@ -566,7 +566,7 @@
                                                                 <action selector="starButtonPressed:" destination="3qo-7Q-mDd" eventType="touchUpInside" id="SRr-16-HnF"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9y-qp-1fg">
+                                                        <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9y-qp-1fg">
                                                             <rect key="frame" x="168" y="0.0" width="40" height="40"/>
                                                             <color key="backgroundColor" name="UIElementBackground"/>
                                                             <constraints>
@@ -589,10 +589,12 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Cdi-Dd-8U4" firstAttribute="top" secondItem="oWt-vA-aaZ" secondAttribute="bottom" constant="3" id="1dS-1q-W16"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cdi-Dd-8U4" secondAttribute="trailing" constant="101" id="JP8-BD-87o"/>
+                                                <constraint firstItem="Cdi-Dd-8U4" firstAttribute="leading" secondItem="1bV-gj-855" secondAttribute="leading" constant="101" id="N3U-Ig-bK6"/>
                                                 <constraint firstItem="PNv-q0-r6g" firstAttribute="top" secondItem="oWt-vA-aaZ" secondAttribute="bottom" constant="5" id="UJF-Zs-3LK"/>
                                                 <constraint firstItem="oWt-vA-aaZ" firstAttribute="leading" secondItem="1bV-gj-855" secondAttribute="leading" id="eTI-wg-1rI"/>
                                                 <constraint firstAttribute="trailing" secondItem="oWt-vA-aaZ" secondAttribute="trailing" id="j0n-OL-HZT"/>
-                                                <constraint firstItem="Cdi-Dd-8U4" firstAttribute="top" secondItem="1bV-gj-855" secondAttribute="top" constant="27" id="lRU-zC-GIM"/>
                                                 <constraint firstItem="PNv-q0-r6g" firstAttribute="centerX" secondItem="1bV-gj-855" secondAttribute="centerX" id="mYx-2b-YFc"/>
                                                 <constraint firstItem="oWt-vA-aaZ" firstAttribute="top" secondItem="1bV-gj-855" secondAttribute="top" id="xQR-js-WHK"/>
                                             </constraints>
@@ -610,7 +612,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZZ-DS-xcb">
-                                                    <rect key="frame" x="8" y="12" width="82" height="24"/>
+                                                    <rect key="frame" x="8" y="10" width="82" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="82" id="3Sm-ds-ATQ"/>
                                                         <constraint firstAttribute="height" constant="24" id="7mX-0S-iBx"/>
@@ -620,7 +622,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title of Review" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zrA-y3-tWV">
-                                                    <rect key="frame" x="93" y="5" width="313" height="34"/>
+                                                    <rect key="frame" x="98" y="5" width="308" height="34"/>
                                                     <color key="backgroundColor" name="UIElementBackground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="6Bt-8v-nRF"/>
@@ -634,9 +636,9 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7ZZ-DS-xcb" firstAttribute="top" secondItem="d3V-Dn-yQc" secondAttribute="top" constant="12" id="5cc-hg-cxb"/>
+                                                <constraint firstItem="7ZZ-DS-xcb" firstAttribute="top" secondItem="d3V-Dn-yQc" secondAttribute="top" constant="10" id="5cc-hg-cxb"/>
                                                 <constraint firstItem="zrA-y3-tWV" firstAttribute="top" secondItem="d3V-Dn-yQc" secondAttribute="top" constant="5" id="Du0-8Q-PCU"/>
-                                                <constraint firstItem="zrA-y3-tWV" firstAttribute="leading" secondItem="7ZZ-DS-xcb" secondAttribute="trailing" constant="3" id="bPx-uA-7ji"/>
+                                                <constraint firstItem="zrA-y3-tWV" firstAttribute="leading" secondItem="7ZZ-DS-xcb" secondAttribute="trailing" constant="8" id="bPx-uA-7ji"/>
                                                 <constraint firstItem="7ZZ-DS-xcb" firstAttribute="leading" secondItem="d3V-Dn-yQc" secondAttribute="leading" constant="8" id="t4e-tj-pWY"/>
                                                 <constraint firstAttribute="trailing" secondItem="zrA-y3-tWV" secondAttribute="trailing" constant="8" id="yG2-yz-hSQ"/>
                                             </constraints>
@@ -676,11 +678,8 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="review goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NKY-mu-SA9">
                                                     <rect key="frame" x="28" y="50" width="358" height="220"/>
                                                     <color key="backgroundColor" name="UIElementBackground"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="220" id="L9s-M5-Ytp"/>
-                                                    </constraints>
                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -689,6 +688,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="NKY-mu-SA9" secondAttribute="trailing" constant="8" id="9tL-Pv-KgJ"/>
                                                 <constraint firstItem="NKY-mu-SA9" firstAttribute="leading" secondItem="Kf3-g6-N9d" secondAttribute="leadingMargin" constant="8" id="N5m-ww-RKD"/>
                                                 <constraint firstItem="NKY-mu-SA9" firstAttribute="top" secondItem="64y-sL-Fn2" secondAttribute="bottom" constant="3" id="Qna-Om-Bqe"/>
+                                                <constraint firstAttribute="bottom" secondItem="NKY-mu-SA9" secondAttribute="bottom" constant="8" id="XbY-Eb-WQZ"/>
                                                 <constraint firstItem="rJe-FO-dDm" firstAttribute="top" secondItem="Kf3-g6-N9d" secondAttribute="topMargin" constant="12" id="Xw1-Ux-7tc"/>
                                                 <constraint firstItem="64y-sL-Fn2" firstAttribute="leading" secondItem="Kf3-g6-N9d" secondAttribute="leadingMargin" constant="8" id="pQm-Ea-5YD"/>
                                                 <constraint firstItem="64y-sL-Fn2" firstAttribute="top" secondItem="Kf3-g6-N9d" secondAttribute="topMargin" constant="12" id="rZW-yq-fRl"/>
@@ -741,7 +741,7 @@
                                 <action selector="cancelButtonPressed:" destination="3qo-7Q-mDd" id="DnQ-G2-CFh"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VaN-hV-ZKu">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="VaN-hV-ZKu">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="3qo-7Q-mDd" id="kuI-zV-sGm"/>
                             </connections>

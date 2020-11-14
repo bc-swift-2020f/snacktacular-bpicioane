@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import Firebase
+
+private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .none
+    return dateFormatter
+}()
+
 
 class ReviewTableViewController: UITableViewController {
 
@@ -57,12 +66,41 @@ class ReviewTableViewController: UITableViewController {
         reviewTitleField.text = review.title
         reviewTextView.text = review.text
         rating = review.rating
+        reviewDateLabel.text = "posted: \(dateFormatter.string(from: review.date))"
+        if review.documentID == "" {
+            addBordersToEditableObjects()
+        } else {
+            if review.reviewUserID == Auth.auth().currentUser?.uid {
+                self.navigationItem.leftItemsSupplementBackButton = false
+                saveBarButton.title = "Update"
+                addBordersToEditableObjects()
+                deleteButton.isHidden = false
+            } else {
+                saveBarButton.hide()
+                cancelBarButton.hide()
+                postedByLabel.text = "Posted by: \(review.reviewUserEmail)"
+                for starButton in starButtonCollection {
+                    starButton.backgroundColor = .white
+                    starButton.isEnabled = false
+                }
+                reviewTitleField.isEnabled = false
+                reviewTitleField.borderStyle = .none
+                reviewTitleField.backgroundColor = .white
+                reviewTextView.isEditable = false
+                reviewTextView.backgroundColor = .white
+            }
+        }
     }
     
     func updateFromInterface() {
         review.title = reviewTitleField.text!
         review.text = reviewTextView.text!
-
+    }
+    
+    func addBordersToEditableObjects() {
+        reviewTitleField.addBorder(width: 0.5, radius: 5.0, color: .black)
+        reviewTextView.addBorder(width: 0.5, radius: 5.0, color: .black)
+        buttonsBackgroundView.addBorder(width: 0.5, radius: 5.0, color: .black)
     }
     
     func leaveViewController() {
