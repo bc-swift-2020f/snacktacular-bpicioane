@@ -163,14 +163,19 @@
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Restaurant Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TE9-dW-8Lr">
                                             <rect key="frame" x="8" y="8" width="398" height="33"/>
+                                            <color key="backgroundColor" name="UIElementBackground"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="33" id="5Sw-QE-5aj"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="24"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="nameFieldChanged:" destination="KVi-5Z-U8v" eventType="editingChanged" id="uqw-bz-Y20"/>
+                                            </connections>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Address" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-ni-GCj">
                                             <rect key="frame" x="8" y="43" width="398" height="17"/>
+                                            <color key="backgroundColor" name="UIElementBackground"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="aQS-Uq-RKS"/>
                                             </constraints>
@@ -396,13 +401,13 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="TYN-Gv-o3w">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="TYN-Gv-o3w">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="4Kk-3A-H0G">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="KVi-5Z-U8v" id="g11-k3-3ND"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Wxv-yr-hX9">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Wxv-yr-hX9">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="KVi-5Z-U8v" id="CJ0-5H-p0m"/>
                             </connections>
@@ -415,6 +420,7 @@
                         <outlet property="mapView" destination="2f1-wz-jEc" id="F6N-fC-Sjd"/>
                         <outlet property="nameTextField" destination="TE9-dW-8Lr" id="rFs-Nt-e1U"/>
                         <outlet property="ratingLabel" destination="ttt-oT-vDN" id="xSg-IT-uvo"/>
+                        <outlet property="saveBarButton" destination="Wxv-yr-hX9" id="Qdc-jr-iqo"/>
                         <outlet property="tableView" destination="7tj-A3-qQB" id="ULH-Ze-nCe"/>
                         <segue destination="6BM-Lu-Y5b" kind="presentation" identifier="AddReview" modalPresentationStyle="fullScreen" id="6pU-Cb-yHR"/>
                     </connections>

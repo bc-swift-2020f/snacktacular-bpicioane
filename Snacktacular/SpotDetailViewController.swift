@@ -19,6 +19,7 @@ class SpotDetailViewController: UIViewController {
     let regionDistance: CLLocationDegrees = 750.0
     
 
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -43,6 +44,11 @@ class SpotDetailViewController: UIViewController {
         getLocation()
         if spot == nil {
             spot = Spot()
+        } else {
+            disableTextEditing()
+            cancelButton.hide()
+            saveBarButton.hide()
+            navigationController?.setToolbarHidden(true, animated: true)
         }
         setupMapView()
         reviews = Reviews()
@@ -79,6 +85,15 @@ class SpotDetailViewController: UIViewController {
         spot.address = addressTextField.text!
     }
     
+    func disableTextEditing() {
+        nameTextField.isEnabled = false
+        addressTextField.isEnabled = false
+        nameTextField.backgroundColor = .clear
+        addressTextField.backgroundColor = .clear
+        nameTextField.borderStyle = .none
+        addressTextField.borderStyle = .none
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         updateFromInterface()
         switch segue.identifier ?? "" {
@@ -100,6 +115,10 @@ class SpotDetailViewController: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
             self.spot.saveData { (success) in
+                self.saveBarButton.title = "Done"
+                self.cancelButton.hide()
+                self.navigationController?.setToolbarHidden(true, animated: true)
+                self.disableTextEditing()
                 self.performSegue(withIdentifier: segueIdentifier, sender: nil)
             }
         }
@@ -116,6 +135,15 @@ class SpotDetailViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         } else {
             navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @IBAction func nameFieldChanged(_ sender: UITextField) {
+        let noSpaces = nameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if noSpaces != "" {
+            saveBarButton.isEnabled = true
+        } else {
+            saveBarButton.isEnabled = false
         }
     }
     
