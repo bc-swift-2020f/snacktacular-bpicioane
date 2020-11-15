@@ -202,6 +202,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </collectionViewCellContentView>
+                                                    <connections>
+                                                        <segue destination="5LY-mS-SC6" kind="show" identifier="ShowPhoto" id="APS-n1-OfK"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -252,6 +255,9 @@
                                             <state key="normal" title=" Photo" image="camera.fill" catalog="system">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="photoButtonPressed:" destination="KVi-5Z-U8v" eventType="touchUpInside" id="1pw-vz-Q08"/>
+                                            </connections>
                                         </button>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2f1-wz-jEc">
                                             <rect key="frame" x="0.0" y="62" width="414" height="180"/>
@@ -423,11 +429,104 @@
                         <outlet property="saveBarButton" destination="Wxv-yr-hX9" id="Qdc-jr-iqo"/>
                         <outlet property="tableView" destination="7tj-A3-qQB" id="ULH-Ze-nCe"/>
                         <segue destination="6BM-Lu-Y5b" kind="presentation" identifier="AddReview" modalPresentationStyle="fullScreen" id="6pU-Cb-yHR"/>
+                        <segue destination="Wxr-xu-9xl" kind="presentation" identifier="AddPhoto" modalPresentationStyle="fullScreen" id="59n-fY-a4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o37-gn-Y9Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3885.507246376812" y="132.58928571428572"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="6qz-cy-fVZ">
+            <objects>
+                <viewController id="5LY-mS-SC6" customClass="PhotoViewController" customModule="Snacktacular" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kKM-VW-ziA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2fI-Fd-d15">
+                                <rect key="frame" x="8" y="96" width="398" height="15"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="by: Brenden Logan Picioane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz0-Vb-Z52">
+                                        <rect key="frame" x="0.0" y="0.0" width="257" height="15"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="on: December 32, 2100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lt9-Fh-AVL">
+                                        <rect key="frame" x="265" y="0.0" width="133" height="15"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="LJd-gd-hIJ"/>
+                                </constraints>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This describes my magnificent meal." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WUJ-K3-mmj">
+                                <rect key="frame" x="8" y="111" width="398" height="36"/>
+                                <color key="backgroundColor" name="UIElementBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="byl-TS-KRZ"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DW8-nC-n8H">
+                                <rect key="frame" x="0.0" y="155" width="414" height="650"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3ox-30-sIB" firstAttribute="bottom" secondItem="DW8-nC-n8H" secondAttribute="bottom" constant="8" id="0TN-gq-6YW"/>
+                            <constraint firstItem="2fI-Fd-d15" firstAttribute="top" secondItem="3ox-30-sIB" secondAttribute="top" constant="8" id="A5t-yH-tor"/>
+                            <constraint firstItem="DW8-nC-n8H" firstAttribute="leading" secondItem="3ox-30-sIB" secondAttribute="leading" id="NYH-jZ-8Bq"/>
+                            <constraint firstItem="DW8-nC-n8H" firstAttribute="top" secondItem="WUJ-K3-mmj" secondAttribute="bottom" constant="8" id="Rf4-p1-h2s"/>
+                            <constraint firstItem="3ox-30-sIB" firstAttribute="trailing" secondItem="WUJ-K3-mmj" secondAttribute="trailing" constant="8" id="WQo-C4-V1U"/>
+                            <constraint firstItem="3ox-30-sIB" firstAttribute="trailing" secondItem="DW8-nC-n8H" secondAttribute="trailing" id="cBH-bn-2sf"/>
+                            <constraint firstItem="3ox-30-sIB" firstAttribute="trailing" secondItem="2fI-Fd-d15" secondAttribute="trailing" constant="8" id="hsx-8z-RXE"/>
+                            <constraint firstItem="2fI-Fd-d15" firstAttribute="leading" secondItem="3ox-30-sIB" secondAttribute="leading" constant="8" id="lfa-7b-C7v"/>
+                            <constraint firstItem="WUJ-K3-mmj" firstAttribute="top" secondItem="2fI-Fd-d15" secondAttribute="bottom" id="uvB-uh-evG"/>
+                            <constraint firstItem="WUJ-K3-mmj" firstAttribute="leading" secondItem="3ox-30-sIB" secondAttribute="leading" constant="8" id="wds-hU-gk0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3ox-30-sIB"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ljo-Gy-S3A"/>
+                        <barButtonItem systemItem="trash" id="rYu-HB-dMF">
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="5LY-mS-SC6" id="jEq-1n-5aE"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="57e-HK-bf8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5rk-7n-47a">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="5LY-mS-SC6" id="wG3-DV-k5N"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="brM-J2-qYB">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="5LY-mS-SC6" id="2CN-Zc-PPa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="cancelBarButton" destination="5rk-7n-47a" id="Izv-ub-YM3"/>
+                        <outlet property="dateLabel" destination="lt9-Fh-AVL" id="lFn-bd-RmA"/>
+                        <outlet property="deleteBarButton" destination="rYu-HB-dMF" id="YzA-Z7-7bV"/>
+                        <outlet property="descriptionTextView" destination="WUJ-K3-mmj" id="emI-M5-jM9"/>
+                        <outlet property="photoImageView" destination="DW8-nC-n8H" id="P6v-2C-fZq"/>
+                        <outlet property="postedByLabel" destination="gz0-Vb-Z52" id="geh-DS-u2M"/>
+                        <outlet property="saveBarButton" destination="brM-J2-qYB" id="d2Q-pv-yC2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0W-9b-kJ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5837.68115942029" y="993.75"/>
         </scene>
         <!--Review Table View Controller-->
         <scene sceneID="ojG-ng-Jgm">
@@ -865,9 +964,36 @@
             </objects>
             <point key="canvasLocation" x="4875" y="-294"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2e2-m1-ttl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wxr-xu-9xl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VBt-V1-ybD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5LY-mS-SC6" kind="relationship" relationship="rootViewController" id="ELK-vs-XC8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Hg-H9-e9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3886" y="1067"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="CEa-Hq-6tK"/>
+        <segue reference="APS-n1-OfK"/>
         <segue reference="lah-Bg-qwk"/>
     </inferredMetricsTieBreakers>
     <resources>
