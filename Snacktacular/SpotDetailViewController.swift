@@ -15,6 +15,8 @@ class SpotDetailViewController: UIViewController {
     
     var spot: Spot!
     var photo: Photo!
+    var photos: Photos!
+    var reviews: Reviews!
     var locationManager: CLLocationManager!
     var imagePickerController = UIImagePickerController()
     
@@ -28,11 +30,11 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     
     
-    var reviews: Reviews!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,9 @@ class SpotDetailViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         imagePickerController.delegate = self
         
@@ -57,6 +62,7 @@ class SpotDetailViewController: UIViewController {
         }
         setupMapView()
         reviews = Reviews()
+        photos = Photos()
         updateUserInterface()
         updateMap()
     }
@@ -69,6 +75,9 @@ class SpotDetailViewController: UIViewController {
         }
         reviews.loadData(spot: spot) {
             self.tableView.reloadData()
+        }
+        photos.loadData(spot: spot) {
+            self.collectionView.reloadData()
         }
     }
     
@@ -122,9 +131,12 @@ class SpotDetailViewController: UIViewController {
             destination.photo = photo
         case "ShowPhoto":
             let destination = segue.destination as! PhotoViewController
-            //let selectedIndexPath = tableView.indexPathForSelectedRow!
+            guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {
+                print("L. couldn't get index path")
+                return
+            }
+            destination.photo = photos.photoArray[selectedIndexPath.row]
             destination.spot = spot
-            //destination.review = reviews.reviewArray[selectedIndexPath.row]
         default:
             print("L. Couldn't find a case for \(segue.identifier!)")
         }
@@ -344,6 +356,21 @@ extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! SpotReviewTableViewCell
         cell.review = reviews.reviewArray[indexPath.row]
         return cell
+    }
+    
+    
+}
+
+extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! SpotPhotoCollectionViewCell
+        photoCell.spot = spot
+        photoCell.photo = photos.photoArray[indexPath.row]
+        return photoCell
     }
     
     
