@@ -51,6 +51,7 @@ class Photo {
        }
     
     func saveData(spot: Spot, completion: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
         let storage = Storage.storage()
         // convert photo.image to data type
         guard let photoData = self.image.jpegData(compressionQuality: 0.5) else {
@@ -74,16 +75,26 @@ class Photo {
         }
         uploadTask.observe(.success) { (snapshot) in
             print("upload to firebase storage successful")
-            let db = Firestore.firestore()
-            let dataToSave = self.dictionary
-            let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentID)
-            ref.setData(dataToSave) { (error) in
+            storageRef.downloadURL { (url, error) in
                 guard error == nil else {
-                    print("L. error updating doc. \(error!.localizedDescription)")
+                    print("L. couldn't create image url. \(error!.localizedDescription)")
                     return completion(false)
                 }
-                print("W. updated document \(self.documentID) in spot: \(spot.documentID)")
-                completion(true)
+                guard let url = url else {
+                    print("L. this should never happen. ")
+                    return completion(false)
+                }
+                self.photoURL = "\(url)"
+                let dataToSave = self.dictionary
+                let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentID)
+                ref.setData(dataToSave) { (error) in
+                    guard error == nil else {
+                        print("L. error updating doc. \(error!.localizedDescription)")
+                        return completion(false)
+                    }
+                    print("W. updated document \(self.documentID) in spot: \(spot.documentID)")
+                    completion(true)
+                }
             }
         }
         uploadTask.observe(.failure) { (snapshot) in
